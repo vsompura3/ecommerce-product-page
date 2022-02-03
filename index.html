@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <!-- Linking CSS & JS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./src/script.js" defer></script>
+    <title>Frontend Mentor | E-commerce product page</title>
+  </head>
+  <body>
+    <!-- Header -->
+
+    <header class="header container">
+      <button class="btn navbar-menu-toggle" aria-controls="primary-navigation">
+        <span class="sr-only" aria-expanded="false">Menu</span>
+      </button>
+      <a class="header__logo" href="/index.html">
+        <h1 class="sr-only">Sneakers Homepage</h1>
+        <img src="./images/logo.svg" alt="" />
+      </a>
+      <nav class="navbar" id="primary-navigation" data-visible="false">
+        <ul class="navbar__list">
+          <li><a href="#">Collection</a></li>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="navbar__backdrop" aria-hidden="true"></div>
+      </nav>
+      <div class="header__right">
+        <div class="cart-container">
+          <button class="btn btn-cart">
+            <span class="sr-only">Cart</span>
+            <span aria-hidden="true">
+              <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+                  fill="currentColor"
+                  fill-rule="nonzero"
+                />
+              </svg>
+            </span>
+            <span class="btn-cart--badge hidden">4</span>
+            >>>>>>> frontend
+          </button>
+          <!-- ! Shopping Cart -->
+          <div class="cart-container__dropdown">
+            <span class="cart-title">Cart</span>
+            <div class="cart-items-container">
+              <p class="empty-cart-msg">You cart is empty.</p>
+            </div>
+          </div>
+          <!-- ! Shopping Cart -->
+        </div>
+        <button class="btn btn-account">
+          <span class="sr-only">Your account</span>
+          <img src="./images/image-avatar.png" alt="User Avatar" />
+        </button>
+      </div>
+    </header>
+    <!-- Header Ends -->
+
+    <!-- Main -->
+
+    <main>
+      <section class="container shop shop-grid">
+        <div class="carousel">
+          <div class="carousel-images">
+            <img src="./images/image-product-1.jpg" alt="" />
+            <img src="./images/image-product-2.jpg" alt="" />
+            <img src="./images/image-product-3.jpg" alt="" />
+            <img src="./images/image-product-4.jpg" alt="" />
+          </div>
+          <div class="carousel-controls">
+            <button class="btn btn-prev">
+              <span class="sr-only">Previous Slide</span>
+              <img src="./images/icon-previous.svg" alt="" aria-hidden="true" />
+            </button>
+            <button class="btn btn-next">
+              <span class="sr-only">Next Slide</span>
+              <img src="./images/icon-next.svg" alt="" aria-hidden="true" />
+            </button>
+          </div>
+          <div class="carousel-thumbnails">
+            <button
+              class="btn btn-thumbnail btn-thumbnail-1 carousel-thumbnail-active"
+              data-slide="0"
+              aria-label="thumbnail image 1"
+            >
+              <img src="./images/image-product-1-thumbnail.jpg" alt="" />
+            </button>
+            <button
+              class="btn btn-thumbnail btn-thumbnail-2"
+              data-slide="1"
+              aria-label="thumbnail image 2"
+            >
+              <img src="./images/image-product-2-thumbnail.jpg" alt="" />
+            </button>
+            <button
+              class="btn btn-thumbnail btn-thumbnail-3"
+              data-slide="2"
+              aria-label="thumbnail image 3"
+            >
+              <img src="./images/image-product-3-thumbnail.jpg" alt="" />
+            </button>
+            <button
+              class="btn btn-thumbnail btn-thumbnail-4"
+              data-slide="3"
+              aria-label="thumbnail image 4"
+            >
+              <img src="./images/image-product-4-thumbnail.jpg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="product-details">
+          <span>Sneaker Company</span>
+          <h2>Fall Limited Edition Sneakers</h2>
+          <p>
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they’ll withstand everything
+            the weather can offer.
+          </p>
+          <div class="product-price-modal">
+            <p>
+              <span class="product-price" aria-label="new price">$125.00</span>
+              <span class="product-discount" aria-label="discount percentage"
+                >50%</span
+              >
+            </p>
+            <span class="product-original-price" aria-label="original price"
+              >$250.00</span
+            >
+          </div>
+          <div class="product-actions">
+            <div class="product-to-cart-actions">
+              <button class="btn btn-remove">
+                <span class="sr-only">Remove 1 item</span>
+                <img src="./images/icon-minus.svg" alt="" aria-hidden="true" />
+              </button>
+              <span
+                class="items-to-add"
+                aria-label="number of items to add to cart"
+                >0</span
+              >
+              <button class="btn btn-add">
+                <span class="sr-only">add 1 item</span>
+                <img src="./images/icon-plus.svg" alt="" aria-hidden="true" />
+              </button>
+            </div>
+            <button class="btn btn-addToCart">
+              <span aria-hidden="true">
+                <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+                    fill="currentColor"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+              </span>
+              <span>Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
