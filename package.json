@@ -1,0 +1,24 @@
+{
+  "name": "ecommerce-product-page-main",
+  "version": "1.0.0",
+  "description": "![Design preview for the E-commerce product page coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vsompura3/ecommerce-product-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vsompura3/ecommerce-product-page/issues"
+  },
+  "homepage": "https://github.com/vsompura3/ecommerce-product-page#readme",
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "vite": "^2.9.12"
+  }
+}

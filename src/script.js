@@ -1,134 +1,134 @@
 // Navigation
-const nav = document.querySelector('.navbar');
-const navToggle = document.querySelector('.navbar-menu-toggle');
-const backdrop = document.querySelector('.navbar__backdrop');
+const nav = document.querySelector('.navbar')
+const navToggle = document.querySelector('.navbar-menu-toggle')
+const backdrop = document.querySelector('.navbar__backdrop')
 
 function openMenu() {
-  nav.setAttribute('data-visible', true);
-  navToggle.setAttribute('aria-expanded', true);
+  nav.setAttribute('data-visible', true)
+  navToggle.setAttribute('aria-expanded', true)
 }
 
 function closeMenu() {
-  nav.setAttribute('data-visible', false);
-  navToggle.setAttribute('aria-expanded', false);
+  nav.setAttribute('data-visible', false)
+  navToggle.setAttribute('aria-expanded', false)
 }
 navToggle.addEventListener('click', function () {
-  const visibility = nav.getAttribute('data-visible');
+  const visibility = nav.getAttribute('data-visible')
   if (visibility === 'false') {
-    openMenu();
+    openMenu()
   } else {
-    closeMenu();
+    closeMenu()
   }
-});
+})
 
 backdrop.addEventListener('click', function () {
   if (nav.getAttribute('data-visible')) {
-    closeMenu();
+    closeMenu()
   }
-});
+})
 
 window.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && nav.getAttribute('data-visible')) {
-    closeMenu();
+    closeMenu()
   }
-});
+})
 
 // Sliding Carousel
-const slides = document.querySelectorAll('.carousel-images img');
-const btnPrev = document.querySelector('.carousel-prev');
-const btnNext = document.querySelector('.carousel-next');
-const thumbnailContainer = document.querySelector('.carousel-thumbnails');
+const slides = document.querySelectorAll('.carousel-images img')
+const btnPrev = document.querySelector('.carousel-prev')
+const btnNext = document.querySelector('.carousel-next')
+const thumbnailContainer = document.querySelector('.carousel-thumbnails')
 const thumbnailBtns = thumbnailContainer.querySelectorAll(
   '.btn-carousel-thumbnail',
-);
+)
 
-let currentSlide = 0;
-const maxSlide = slides.length;
+let currentSlide = 0
+const maxSlide = slides.length
 
 // Show Active thumbnail
 function activeThumbnail(slide, tabContainer, tabBtns) {
-  tabBtns.forEach(btn => btn.classList.remove('thumbnail-active'));
+  tabBtns.forEach(btn => btn.classList.remove('thumbnail-active'))
   tabContainer
     .querySelector(`[data-slide="${slide}"]`)
-    .classList.add('thumbnail-active');
+    .classList.add('thumbnail-active')
 }
 // On page load first slide is active
-activeThumbnail(currentSlide, thumbnailContainer, thumbnailBtns);
+activeThumbnail(currentSlide, thumbnailContainer, thumbnailBtns)
 
 // Go to a specific slide
 function goToSlide(slider, slidePosition) {
   slider.forEach((slide, i) => {
-    slide.style.transform = `translateX(${(i - slidePosition) * 100}%)`;
-  });
+    slide.style.transform = `translateX(${(i - slidePosition) * 100}%)`
+  })
 }
 
 // When script runs, load the first slide
-goToSlide(slides, currentSlide);
+goToSlide(slides, currentSlide)
 
 // Go to next slide
 function goToNext(slider, tabContainer, tabBtns) {
   if (currentSlide === maxSlide - 1) {
-    currentSlide = 0;
+    currentSlide = 0
   } else {
-    currentSlide += 1;
+    currentSlide += 1
   }
-  goToSlide(slider, currentSlide);
-  activeThumbnail(currentSlide, tabContainer, tabBtns);
+  goToSlide(slider, currentSlide)
+  activeThumbnail(currentSlide, tabContainer, tabBtns)
 }
 
 // Go to previous slide
 function goToPrev(slider, tabContainer, tabBtns) {
   if (currentSlide === 0) {
-    currentSlide = maxSlide - 1;
+    currentSlide = maxSlide - 1
   } else {
-    currentSlide -= 1;
+    currentSlide -= 1
   }
-  goToSlide(slider, currentSlide);
-  activeThumbnail(currentSlide, tabContainer, tabBtns);
+  goToSlide(slider, currentSlide)
+  activeThumbnail(currentSlide, tabContainer, tabBtns)
 }
 
 // Event Listeners
 btnNext.addEventListener('click', () =>
   goToNext(slides, thumbnailContainer, thumbnailBtns),
-);
+)
 btnPrev.addEventListener('click', () =>
   goToPrev(slides, thumbnailContainer, thumbnailBtns),
-);
+)
 window.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowLeft' && modal.classList.contains('hidden'))
-    goToPrev(slides, thumbnailContainer, thumbnailBtns);
+    goToPrev(slides, thumbnailContainer, thumbnailBtns)
   if (e.key === 'ArrowRight' && modal.classList.contains('hidden'))
-    goToNext(slides, thumbnailContainer, thumbnailBtns);
-});
+    goToNext(slides, thumbnailContainer, thumbnailBtns)
+})
 thumbnailContainer.addEventListener('click', function (e) {
-  if (!e.target.classList.contains('btn-thumbnail')) return;
-  currentSlide = +e.target.dataset.slide;
-  goToSlide(slides, currentSlide);
-  activeThumbnail(currentSlide, thumbnailContainer, thumbnailBtns);
-});
+  if (!e.target.classList.contains('btn-thumbnail')) return
+  currentSlide = +e.target.dataset.slide
+  goToSlide(slides, currentSlide)
+  activeThumbnail(currentSlide, thumbnailContainer, thumbnailBtns)
+})
 
 // Add to Cart functionality
-const btnAdd = document.querySelector('.btn-add');
-const btnRemove = document.querySelector('.btn-remove');
-const count = document.querySelector('.items-to-add');
-const addToCart = document.querySelector('.btn-addToCart');
-const cartContainer = document.querySelector('.cart-items-container');
-const badge = document.querySelector('.btn-cart--badge');
+const btnAdd = document.querySelector('.btn-add')
+const btnRemove = document.querySelector('.btn-remove')
+const count = document.querySelector('.items-to-add')
+const addToCart = document.querySelector('.btn-addToCart')
+const cartContainer = document.querySelector('.cart-items-container')
+const badge = document.querySelector('.btn-cart--badge')
 
-let initialCount = 0;
-let productPrice = 125;
+let initialCount = 0
+let productPrice = 125
 const shoppingCart = {
   productName: 'Fall Limited Edition Sneakers',
   productPrice,
-};
-count.textContent = initialCount;
+}
+count.textContent = initialCount
 
 function toggleBadge(cart) {
   if (cart.qty) {
-    badge.textContent = cart.qty;
-    badge.classList.remove('hidden');
+    badge.textContent = cart.qty
+    badge.classList.remove('hidden')
   } else {
-    badge.classList.add('hidden');
+    badge.classList.add('hidden')
   }
 }
 
@@ -166,102 +166,102 @@ function displayUI(cart) {
       </button>
     </div>
     <button class="btn btn-checkout">Checkout</button>
-  `;
-    cartContainer.innerHTML = html;
+  `
+    cartContainer.innerHTML = html
   } else {
-    cartContainer.innerHTML = `<p class="empty-cart-msg">You cart is empty.</p>`;
+    cartContainer.innerHTML = `<p class="empty-cart-msg">You cart is empty.</p>`
   }
 }
 
 btnAdd.addEventListener('click', function () {
-  if (initialCount === 5) return;
-  initialCount += 1;
-  shoppingCart.qty = initialCount;
-  count.textContent = initialCount;
-});
+  if (initialCount === 5) return
+  initialCount += 1
+  shoppingCart.qty = initialCount
+  count.textContent = initialCount
+})
 
 btnRemove.addEventListener('click', function () {
-  if (initialCount === 0) return;
-  initialCount -= 1;
-  shoppingCart.qty = initialCount;
-  count.textContent = initialCount;
-});
+  if (initialCount === 0) return
+  initialCount -= 1
+  shoppingCart.qty = initialCount
+  count.textContent = initialCount
+})
 
 addToCart.addEventListener('click', function () {
-  displayUI(shoppingCart);
-  toggleBadge(shoppingCart);
-});
+  displayUI(shoppingCart)
+  toggleBadge(shoppingCart)
+})
 
 cartContainer.addEventListener('click', function (e) {
-  if (!e.target.classList.contains('btn-delete')) return;
-  shoppingCart.qty = 0;
-  initialCount = 0;
-  count.textContent = initialCount;
-  displayUI(shoppingCart);
-  toggleBadge(shoppingCart);
-});
+  if (!e.target.classList.contains('btn-delete')) return
+  shoppingCart.qty = 0
+  initialCount = 0
+  count.textContent = initialCount
+  displayUI(shoppingCart)
+  toggleBadge(shoppingCart)
+})
 
 // Modal
-const modal = document.querySelector('.modal-container');
-const closeBtn = document.querySelector('.btn-close');
+const modal = document.querySelector('.modal-container')
+const closeBtn = document.querySelector('.btn-close')
 
 function toggleModal() {
   if (modal.classList.contains('hidden')) {
-    modal.classList.remove('hidden');
+    modal.classList.remove('hidden')
   } else {
-    modal.classList.add('hidden');
+    modal.classList.add('hidden')
   }
 }
 
-const modalSlides = document.querySelectorAll('.modal-images img');
-const btnPrevModal = document.querySelector('.modal-prev');
-const btnNextModal = document.querySelector('.modal-next');
-const modalThumbnailContainer = document.querySelector('.modal-thumbnails');
+const modalSlides = document.querySelectorAll('.modal-images img')
+const btnPrevModal = document.querySelector('.modal-prev')
+const btnNextModal = document.querySelector('.modal-next')
+const modalThumbnailContainer = document.querySelector('.modal-thumbnails')
 const modalThumbnailBtns = modalThumbnailContainer.querySelectorAll(
   '.btn-modal-thumbnail',
-);
+)
 
 btnNextModal.addEventListener('click', () =>
   goToNext(modalSlides, modalThumbnailContainer, modalThumbnailBtns),
-);
+)
 btnPrevModal.addEventListener('click', () =>
   goToPrev(modalSlides, modalThumbnailContainer, modalThumbnailBtns),
-);
+)
 
 slides.forEach((slide, i) =>
   slide.addEventListener('click', e => {
-    toggleModal();
-    goToSlide(modalSlides, i);
-    activeThumbnail(i, modalThumbnailContainer, modalThumbnailBtns);
+    toggleModal()
+    goToSlide(modalSlides, i)
+    activeThumbnail(i, modalThumbnailContainer, modalThumbnailBtns)
   }),
-);
-closeBtn.addEventListener('click', toggleModal);
+)
+closeBtn.addEventListener('click', toggleModal)
 
 window.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    modal.classList.add('hidden');
+    modal.classList.add('hidden')
   }
-});
+})
 
 modal.addEventListener('click', function (e) {
-  if (modal.classList.contains('hidden')) return;
+  if (modal.classList.contains('hidden')) return
   if (!e.target.closest('.modal-inner')) {
-    modal.classList.add('hidden');
+    modal.classList.add('hidden')
   }
-});
+})
 
 modalThumbnailContainer.addEventListener('click', function (e) {
-  if (!e.target.classList.contains('btn-thumbnail')) return;
-  currentSlide = +e.target.dataset.slide;
-  goToSlide(modalSlides, currentSlide);
-  activeThumbnail(currentSlide, modalThumbnailContainer, modalThumbnailBtns);
-});
+  if (!e.target.classList.contains('btn-thumbnail')) return
+  currentSlide = +e.target.dataset.slide
+  goToSlide(modalSlides, currentSlide)
+  activeThumbnail(currentSlide, modalThumbnailContainer, modalThumbnailBtns)
+})
 
 window.addEventListener('keydown', function (e) {
-  if (modal.classList.contains('hidden')) return;
+  if (modal.classList.contains('hidden')) return
 
   if (e.key === 'ArrowLeft')
-    goToPrev(modalSlides, modalThumbnailContainer, modalThumbnailBtns);
+    goToPrev(modalSlides, modalThumbnailContainer, modalThumbnailBtns)
   if (e.key === 'ArrowRight')
-    goToNext(modalSlides, modalThumbnailContainer, modalThumbnailBtns);
-});
+    goToNext(modalSlides, modalThumbnailContainer, modalThumbnailBtns)
+})
