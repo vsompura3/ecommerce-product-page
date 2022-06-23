@@ -813,13 +813,13 @@ footer {
     aspect-ratio: 1;
     width: 1.5rem;
     height: 1.5rem;
-    background-image: url('../images/icon-menu.svg');
+    background-image: url('../../images/icon-menu.svg');
     background-repeat: no-repeat;
     background-position: center;
   }
 
   .navbar-menu-toggle[aria-expanded='true'] {
-    background-image: url('../images/icon-close.svg');
+    background-image: url('../../images/icon-close.svg');
     left: 0.5em;
   }
 

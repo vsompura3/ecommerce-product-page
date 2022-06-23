@@ -1,15 +1,18 @@
 // Navigation
 const nav = document.querySelector('.navbar')
+nav.inert = true
 const navToggle = document.querySelector('.navbar-menu-toggle')
 const backdrop = document.querySelector('.navbar__backdrop')
 
 function openMenu() {
   nav.setAttribute('data-visible', true)
+  // nav.inert = true
   navToggle.setAttribute('aria-expanded', true)
 }
 
 function closeMenu() {
   nav.setAttribute('data-visible', false)
+  // nav.inert = false
   navToggle.setAttribute('aria-expanded', false)
 }
 navToggle.addEventListener('click', function () {
